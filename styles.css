@@ -1,111 +1,388 @@
+/* styles.css - Versión completamente responsiva */
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Times New Roman', Times, serif; /* Cambia la fuente a Times New Roman */
+    font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
-    height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
+    min-height: 100vh;
     background-image: url('imagenes/background.jpg');
-    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
-    background-position: center; /* Centra la imagen de fondo */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .container {
     text-align: center;
+    padding: 15px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: white;
+    margin: 15px 0 25px 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+/* Filtros y búsqueda - Mobile First */
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+    background-color: rgba(0, 0, 0, 0.4);
     padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 input, select {
-    margin: 10px;
-    padding: 10px;
+    margin: 8px 0;
+    padding: 12px 15px;
+    width: 100%;
+    max-width: 400px;
+    font-size: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #333;
+    font-family: 'Times New Roman', Times, serif;
+    transition: all 0.3s ease;
 }
 
+input:focus, select:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+input::placeholder {
+    color: #666;
+}
+
+/* Galería - Mobile First */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-    gap: 10px; /* Espacio reducido entre las imágenes */
-    justify-items: center; /* Centra las imágenes en cada celda */
+    grid-template-columns: 1fr;
+    gap: 15px;
+    justify-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
 .thumbnail {
-    border-radius: 20px; /* Bordes redondeados en las esquinas */
-    overflow: hidden; /* Esconde el desbordamiento */
-    transition: transform 0.2s; /* Transición para el efecto pop */
-    width: 600px; /* Ancho aumentado para las miniaturas */
-    height: 300px; /* Alto aumentado para las miniaturas */
-    padding: 1px; /* Espacio interno reducido para aumentar el espacio alrededor de la imagen */
-    box-sizing: border-box; /* Incluye el padding en el tamaño total */
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+    height: 220px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
 }
 
 .thumbnail:hover {
-    transform: scale(1.05); /* Efecto pop al pasar el ratón */
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .thumbnail img {
-    width: 100%; /* Hace que la imagen ocupe todo el contenedor */
-    height: 100%; /* Hace que la imagen ocupe todo el contenedor */
-    object-fit: cover; /* Mantiene la proporción de la imagen y recorta si es necesario */
-    border-radius: 10px; /* Asegura que la imagen también tenga esquinas redondeadas */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
 }
 
+/* Modal */
 .modal {
-    display: none; /* Asegúrate de que esté oculto inicialmente */
+    display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.95);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .modal-content {
     margin: auto;
     display: block;
-    width: 90%; /* Ajusta el ancho del modal */
-    max-width: 900px; /* Aumenta el tamaño máximo de la imagen */
+    width: 95%;
+    max-width: 800px;
+    max-height: 85vh;
+    object-fit: contain;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
 .close {
-    position: absolute;
+    position: fixed;
     top: 20px;
-    right: 35px;
+    right: 25px;
     color: white;
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
-    transition: color 0.3s; /* Transición suave para el cambio de color */
+    transition: all 0.3s ease;
+    z-index: 1001;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .close:hover {
-    color: red; /* Cambia a rojo al pasar el ratón */
+    color: #ff4444;
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: rotate(90deg);
 }
 
+/* Paginación */
 .pagination {
-    margin-top: 20px;
+    margin-top: 25px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .pagination button {
-    padding: 15px 30px; /* Aumenta el padding para hacer los botones más grandes */
-    font-size: 16px; /* Aumenta el tamaño de la fuente */
-    border: none; /* Elimina el borde predeterminado */
-    border-radius: 5px; /* Bordes redondeados */
-    background-color: #007BFF; /* Color de fondo */
-    color: white; /* Color del texto */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-    transition: background-color 0.3s; /* Transición suave para el color de fondo */
-    font-family: 'Times New Roman', Times, serif; /* Asegura que los botones usen la misma fuente */
+    padding: 14px 28px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(0, 123, 255, 0.9);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Times New Roman', Times, serif;
+    min-width: 140px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.pagination button:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+.pagination button:hover:not(:disabled) {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pagination button:active:not(:disabled) {
+    transform: translateY(0);
 }
 
 .pagination button:disabled {
-    background-color: #ccc; /* Color de fondo para botones deshabilitados */
-    cursor: not-allowed; /* Cambia el cursor para indicar que está deshabilitado */
+    background-color: rgba(204, 204, 204, 0.7);
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
-h1 {
-    color: white; /* Cambia el color del texto a blanco */
+/* Media Queries para Responsividad */
+
+/* Tablets (pantallas de 600px o más) */
+@media (min-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+        margin: 20px 0 30px 0;
+    }
+    
+    .filters {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    input, select {
+        width: auto;
+        min-width: 180px;
+        margin: 0;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .thumbnail {
+        height: 250px;
+        max-width: none;
+    }
+    
+    .modal-content {
+        width: 90%;
+    }
+}
+
+/* Tablets grandes y laptops pequeños (pantallas de 768px o más) */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .thumbnail {
+        height: 280px;
+    }
+    
+    .pagination button {
+        padding: 16px 32px;
+        font-size: 18px;
+        min-width: 160px;
+    }
+}
+
+/* Laptops y desktops (pantallas de 992px o más) */
+@media (min-width: 992px) {
+    .container {
+        padding: 30px;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+    
+    .thumbnail {
+        height: 300px;
+    }
+    
+    .modal-content {
+        max-width: 900px;
+    }
+}
+
+/* Desktops grandes (pantallas de 1200px o más) */
+@media (min-width: 1200px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+    
+    .thumbnail {
+        height: 320px;
+    }
+    
+    h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Desktops muy grandes (pantallas de 1400px o más) */
+@media (min-width: 1400px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+    }
+    
+    .thumbnail {
+        height: 350px;
+    }
+}
+
+/* Ajustes para dispositivos muy pequeños (menos de 400px) */
+@media (max-width: 399px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .thumbnail {
+        height: 200px;
+    }
+    
+    .pagination {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pagination button {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .filters {
+        padding: 15px 10px;
+    }
+}
+
+/* Ajustes para orientación horizontal en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .thumbnail {
+        height: 180px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin: 10px 0 15px 0;
+    }
+    
+    .filters {
+        flex-direction: row;
+        padding: 10px 15px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Mejora de accesibilidad para alto contraste */
+@media (prefers-contrast: high) {
+    .thumbnail {
+        border: 3px solid white;
+    }
+    
+    .pagination button {
+        border: 2px solid white;
+    }
+}
+
+/* Modo oscuro del sistema */
+@media (prefers-color-scheme: dark) {
+    input, select {
+        background-color: rgba(30, 30, 30, 0.95);
+        color: white;
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    input::placeholder {
+        color: #aaa;
+    }
 }
