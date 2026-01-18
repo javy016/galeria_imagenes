@@ -1,4 +1,4 @@
-/* styles.css - Versión completamente responsiva con diseño mejorado */
+/* styles.css - Diseño completamente responsivo con icono de filtro */
 * {
     box-sizing: border-box;
 }
@@ -25,35 +25,36 @@ body {
 
 h1 {
     color: white;
-    margin: 20px 0 30px 0;
+    margin: 20px 0 40px 0; /* Más margen inferior */
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
     font-size: 2rem;
     line-height: 1.2;
     letter-spacing: 0.5px;
 }
 
-/* ===== DISEÑO MÓVIL ===== */
-
-/* Filtros para móvil (sin cambios) */
+/* ========== FILTROS - VERSIÓN MÓVIL ========== */
 .filters {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    margin-bottom: 25px; /* Más espacio en móvil */
+    margin-bottom: 35px; /* MÁS ESPACIO en móvil */
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 12px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 12px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    gap: 8px;
+    gap: 10px;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #search {
     margin: 0;
-    padding: 11px 12px;
-    font-size: 14px;
+    padding: 12px 15px;
+    font-size: 15px;
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.95);
@@ -64,15 +65,25 @@ h1 {
     -moz-appearance: none;
     appearance: none;
     flex: 1.2;
-    min-width: 140px;
+    min-width: 150px;
     max-width: 60%;
-    height: 44px;
+    height: 48px;
+}
+
+/* Contenedor del filtro de categorías con icono */
+.category-filter-container {
+    position: relative;
+    flex: 1;
+    min-width: 130px;
+    max-width: 35%;
+    display: flex;
+    align-items: center;
 }
 
 #category {
     margin: 0;
-    padding: 11px 12px 11px 12px;
-    font-size: 14px;
+    padding: 12px 15px 12px 40px; /* Más padding izquierdo para icono */
+    font-size: 15px;
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 8px;
     background-color: #1E1E1EF2;
@@ -82,211 +93,129 @@ h1 {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    flex: 1;
-    min-width: 120px;
-    max-width: 35%;
-    height: 44px;
+    width: 100%;
+    height: 48px;
     cursor: pointer;
 }
 
-.category-wrapper {
-    position: relative;
-    flex: 1;
-    min-width: 120px;
-    max-width: 35%;
-}
-
-.category-wrapper::after {
+/* Icono de filtro dentro del select (versión móvil) */
+.category-filter-container::before {
     content: "▼";
     position: absolute;
+    right: 15px;
     top: 50%;
-    right: 12px;
     transform: translateY(-50%);
     pointer-events: none;
     color: white;
-    font-size: 10px;
-    transition: transform 0.3s ease;
+    font-size: 12px;
+    z-index: 2;
 }
 
-/* ===== DISEÑO DESKTOP ===== */
-
-@media (min-width: 768px) {
-    .container {
-        padding: 30px;
-    }
-    
-    h1 {
-        font-size: 2.5rem;
-        margin: 25px 0 40px 0; /* Más espacio debajo del título */
-    }
-    
-    /* Diseño de filtros para desktop con icono */
-    .filters {
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 40px; /* MUCHO más espacio antes de la galería */
-        padding: 20px 30px;
-        gap: 20px;
-        background-color: rgba(0, 0, 0, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 15px;
-        max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-    }
-    
-    /* Icono de filtro para desktop */
-    .filters::before {
-        content: "⚙️";
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 20px;
-        filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
-        opacity: 0.8;
-    }
-    
-    /* Alternativa con icono SVG si prefieres */
-    .filters::before {
-        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3'%3E%3C/polygon%3E%3C/svg%3E");
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        opacity: 0.8;
-    }
-    
-    #search, #category {
-        height: 48px;
-        font-size: 16px;
-        min-width: 200px;
-        max-width: none;
-        flex: none;
-        padding: 12px 15px;
-        border-radius: 10px;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    #search {
-        background-color: rgba(255, 255, 255, 0.95);
-        color: #333;
-        width: 300px;
-        padding-left: 15px;
-    }
-    
-    #category {
-        background-color: #1E1E1EF2;
-        color: white;
-        width: 250px;
-        padding-right: 40px; /* Espacio para la flecha */
-    }
-    
-    .category-wrapper {
-        position: relative;
-        flex: none;
-        min-width: 250px;
-        max-width: none;
-    }
-    
-    .category-wrapper::after {
-        content: "▼";
-        position: absolute;
-        top: 50%;
-        right: 15px;
-        transform: translateY(-50%);
-        font-size: 12px;
-        color: white;
-        pointer-events: none;
-    }
-    
-    /* Efectos hover para desktop */
-    #search:hover {
-        border-color: #007BFF;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    #category:hover {
-        background-color: #2A2A2AF2;
-        border-color: rgba(255, 255, 255, 0.6);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    #search:focus, #category:focus {
-        outline: none;
-        border-color: #007BFF;
-        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
-    }
-    
-    /* Galería con 3 columnas en desktop */
-    .gallery {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 25px; /* Más espacio entre imágenes */
-        padding: 10px;
-        margin-bottom: 30px;
-    }
-    
-    .thumbnail {
-        height: 250px;
-        border-radius: 12px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    
-    .thumbnail:hover {
-        transform: scale(1.05) translateY(-5px);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-        z-index: 1;
-    }
-    
-    .thumbnail img {
-        border-radius: 12px;
-    }
-    
-    .pagination {
-        margin-top: 40px;
-        padding: 20px;
-        gap: 20px;
-    }
-    
-    .pagination button {
-        padding: 15px 30px;
-        font-size: 16px;
-        min-width: 150px;
-        border-radius: 10px;
-    }
+/* Icono de filtro SVG a la izquierda (versión móvil) */
+.category-filter-container::after {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3'%3E%3C/polygon%3E%3C/svg%3E");
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    opacity: 0.9;
+    z-index: 2;
 }
 
-/* ===== DISEÑO TABLET (entre móvil y desktop) ===== */
-@media (min-width: 600px) and (max-width: 767px) {
+/* Efectos hover para móvil */
+#search:hover {
+    border-color: #007BFF;
+}
+
+#category:hover {
+    background-color: #2A2A2AF2;
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ========== GALERÍA - VERSIÓN MÓVIL (2 columnas) ========== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    justify-items: center;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.thumbnail {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 200px; /* Altura aumentada */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+/* ========== VERSIÓN TABLET (≥600px) ========== */
+@media (min-width: 600px) {
     .container {
         padding: 25px;
     }
     
     h1 {
-        font-size: 2.2rem;
-        margin: 25px 0 35px 0;
+        font-size: 2.3rem;
+        margin: 25px 0 50px 0; /* Aún más espacio */
     }
     
     .filters {
-        margin-bottom: 30px;
-        padding: 15px;
+        margin-bottom: 50px; /* MUCHO más espacio */
+        padding: 18px;
         gap: 15px;
+        max-width: 90%;
     }
     
     #search, #category {
-        height: 46px;
-        font-size: 15px;
+        height: 52px;
+        font-size: 16px;
+        padding: 14px 20px;
+    }
+    
+    #search {
         min-width: 180px;
-        padding: 12px 14px;
+        max-width: none;
+        flex: 1.5;
+    }
+    
+    .category-filter-container {
+        min-width: 180px;
+        max-width: none;
+        flex: 1;
+    }
+    
+    #category {
+        padding-left: 45px; /* Más espacio para icono */
+    }
+    
+    .category-filter-container::after {
+        left: 15px;
+        width: 18px;
+        height: 18px;
     }
     
     .gallery {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Mantiene 2 columnas */
         gap: 20px;
     }
     
@@ -295,33 +224,215 @@ h1 {
     }
 }
 
-/* ===== DISEÑO DESKTOP GRANDE ===== */
+/* ========== VERSIÓN DESKTOP (≥768px) ========== */
+@media (min-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+    
+    h1 {
+        font-size: 2.7rem;
+        margin: 30px 0 60px 0; /* MÁXIMO espacio */
+    }
+    
+    /* FILTROS DESKTOP CON DISEÑO MEJORADO */
+    .filters {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 70px; /* ESPACIO MÁXIMO entre filtros y fotos */
+        padding: 22px 30px;
+        gap: 25px;
+        background-color: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        max-width: 850px;
+    }
+    
+    /* Icono de filtro destacado en desktop */
+    .filters::before {
+        content: "FILTROS";
+        position: absolute;
+        left: -100px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .filters::before {
+        content: "";
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3'%3E%3C/polygon%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(30, 30, 30, 0.8);
+        border-radius: 50%;
+        padding: 8px;
+        left: -60px;
+    }
+    
+    #search, #category {
+        height: 56px;
+        font-size: 17px;
+        min-width: 220px;
+        padding: 15px 25px;
+        border-radius: 10px;
+    }
+    
+    #search {
+        background-color: rgba(255, 255, 255, 0.95);
+        color: #333;
+        width: 280px;
+        flex: none;
+    }
+    
+    #category {
+        background-color: #1E1E1EF2;
+        color: white;
+        width: 250px;
+        padding-left: 50px; /* Espacio para icono interno */
+        flex: none;
+    }
+    
+    .category-filter-container {
+        min-width: 250px;
+        flex: none;
+    }
+    
+    .category-filter-container::after {
+        left: 20px;
+        width: 20px;
+        height: 20px;
+    }
+    
+    .category-filter-container::before {
+        right: 20px;
+        font-size: 14px;
+    }
+    
+    /* GALERÍA DESKTOP - 3 COLUMNAS */
+    .gallery {
+        grid-template-columns: repeat(3, 1fr); /* 3 COLUMNAS */
+        gap: 25px;
+        padding: 15px;
+        margin-bottom: 40px;
+    }
+    
+    .thumbnail {
+        height: 260px; /* Altura aumentada para desktop */
+        border-radius: 14px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+    
+    .thumbnail:hover {
+        transform: scale(1.08) translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        z-index: 1;
+    }
+    
+    .thumbnail img {
+        border-radius: 14px;
+    }
+    
+    /* PAGINACIÓN DESKTOP */
+    .pagination {
+        margin-top: 50px;
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    .pagination button {
+        padding: 16px 35px;
+        font-size: 17px;
+        min-width: 160px;
+        border-radius: 10px;
+    }
+}
+
+/* ========== DESKTOP GRANDE (≥992px) ========== */
 @media (min-width: 992px) {
     .container {
         padding: 40px;
     }
     
     h1 {
-        font-size: 3rem;
-        margin: 30px 0 50px 0; /* Aún más espacio */
+        font-size: 3.2rem;
+        margin: 40px 0 80px 0; /* ESPACIO MÁXIMO */
     }
     
     .filters {
-        margin-bottom: 50px; /* Espacio máximo antes de la galería */
+        margin-bottom: 90px; /* ESPACIO EXTREMO entre filtros y fotos */
         padding: 25px 40px;
-        gap: 25px;
-        max-width: 1000px;
+        gap: 30px;
+        max-width: 900px;
     }
     
     .filters::before {
-        left: 30px;
-        font-size: 24px;
+        left: -70px;
+        width: 45px;
+        height: 45px;
     }
     
     #search, #category {
-        height: 52px;
-        font-size: 17px;
-        padding: 14px 20px;
+        height: 60px;
+        font-size: 18px;
+        min-width: 260px;
+        padding: 17px 30px;
+    }
+    
+    #search {
+        width: 320px;
+    }
+    
+    #category {
+        width: 280px;
+        padding-left: 55px;
+    }
+    
+    .category-filter-container {
+        min-width: 280px;
+    }
+    
+    .category-filter-container::after {
+        left: 25px;
+        width: 22px;
+        height: 22px;
+    }
+    
+    /* GALERÍA 3 COLUMNAS PERFECTA */
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+        padding: 20px;
+    }
+    
+    .thumbnail {
+        height: 300px; /* Altura óptima para 3 columnas */
+        border-radius: 16px;
+    }
+    
+    .thumbnail img {
+        border-radius: 16px;
+    }
+}
+
+/* ========== DESKTOP EXTRA GRANDE (≥1200px) ========== */
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 3.8rem;
+    }
+    
+    .filters {
+        margin-bottom: 100px; /* ESPACIO MÁXIMO ABSOLUTO */
+        max-width: 950px;
     }
     
     #search {
@@ -329,80 +440,72 @@ h1 {
     }
     
     #category {
-        width: 280px;
+        width: 300px;
     }
     
-    .category-wrapper {
-        min-width: 280px;
-    }
-    
-    .category-wrapper::after {
-        right: 20px;
-        font-size: 14px;
+    .category-filter-container {
+        min-width: 300px;
     }
     
     .gallery {
         grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
+        gap: 40px;
     }
     
     .thumbnail {
-        height: 280px;
+        height: 320px; /* Altura máxima para imágenes grandes */
     }
 }
 
-/* ===== DESKTOP EXTRA GRANDE ===== */
-@media (min-width: 1200px) {
-    .gallery {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 35px;
-        padding: 15px;
-    }
-    
-    .thumbnail {
-        height: 300px;
-    }
-    
+/* ========== MÓVILES MUY PEQUEÑOS (<400px) ========== */
+@media (max-width: 399px) {
     h1 {
-        font-size: 3.5rem;
+        font-size: 1.7rem;
+        margin: 15px 0 30px 0;
     }
     
     .filters {
-        margin-bottom: 60px; /* Espacio máximo */
+        margin-bottom: 30px;
+        padding: 12px 10px;
+        gap: 8px;
+    }
+    
+    #search, #category {
+        padding: 11px 12px;
+        font-size: 14px;
+        height: 46px;
+    }
+    
+    #search {
+        min-width: 130px;
+        max-width: 55%;
+    }
+    
+    .category-filter-container {
+        min-width: 110px;
+        max-width: 40%;
+    }
+    
+    #category {
+        padding-left: 35px;
+    }
+    
+    .category-filter-container::after {
+        left: 10px;
+        width: 14px;
+        height: 14px;
+    }
+    
+    .thumbnail {
+        height: 180px;
+    }
+    
+    .gallery {
+        gap: 12px;
     }
 }
 
-/* ===== GALERÍA - ESTILOS GENERALES ===== */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    justify-items: center;
-    padding: 8px;
-    margin-bottom: 25px;
-}
-
-.thumbnail {
-    border-radius: 10px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    width: 100%;
-    height: 180px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    background-color: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-}
-
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-}
-
-/* ===== MODAL ===== */
+/* ========== MODAL ========== */
 .modal {
     display: none;
     position: fixed;
@@ -438,17 +541,17 @@ h1 {
 
 .close {
     position: fixed;
-    top: 20px;
-    right: 30px;
+    top: 25px;
+    right: 35px;
     color: white;
-    font-size: 40px;
+    font-size: 45px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 1001;
     background-color: rgba(0, 0, 0, 0.5);
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -461,9 +564,9 @@ h1 {
     transform: rotate(90deg);
 }
 
-/* ===== PAGINACIÓN ===== */
+/* ========== PAGINACIÓN ========== */
 .pagination {
-    margin-top: 30px;
+    margin-top: 40px;
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -472,28 +575,28 @@ h1 {
 }
 
 .pagination button {
-    padding: 13px 25px;
-    font-size: 15px;
+    padding: 14px 28px;
+    font-size: 16px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: rgba(0, 123, 255, 0.9);
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Times New Roman', Times, serif;
-    min-width: 130px;
+    min-width: 140px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .pagination button:hover:not(:disabled) {
     background-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .pagination button:active:not(:disabled) {
-    transform: translateY(0);
+    transform: translateY(-1px);
 }
 
 .pagination button:disabled {
@@ -502,7 +605,7 @@ h1 {
     opacity: 0.6;
 }
 
-/* ===== MODO OSCURO ===== */
+/* ========== MODO OSCURO ========== */
 @media (prefers-color-scheme: dark) {
     #search {
         background-color: rgba(30, 30, 30, 0.95);
@@ -512,51 +615,5 @@ h1 {
     
     #search::placeholder {
         color: #aaa;
-    }
-    
-    #search:focus {
-        background-color: rgba(30, 30, 30, 0.95);
-    }
-}
-
-/* ===== MÓVILES MUY PEQUEÑOS ===== */
-@media (max-width: 359px) {
-    .container {
-        padding: 15px;
-    }
-    
-    h1 {
-        font-size: 1.5rem;
-        margin: 15px 0 20px 0;
-    }
-    
-    .filters {
-        padding: 10px 8px;
-        margin-bottom: 20px;
-        gap: 6px;
-    }
-    
-    #search, #category {
-        padding: 10px 8px;
-        font-size: 13px;
-        height: 42px;
-    }
-    
-    #search {
-        min-width: 120px;
-        max-width: 58%;
-    }
-    
-    #category {
-        min-width: 100px;
-        max-width: 38%;
-    }
-    
-    .thumbnail {
-        height: 150px;
-    }
-    
-    .gallery {
-        gap: 10px;
     }
 }
