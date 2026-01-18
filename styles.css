@@ -31,23 +31,24 @@ h1 {
     line-height: 1.2;
 }
 
-/* Filtros y búsqueda - Mobile First (ahora en una línea) */
+/* Filtros y búsqueda - Mobile First */
 .filters {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-wrap: nowrap; /* Evita que se rompa en móviles */
+    flex-wrap: nowrap;
     margin-bottom: 20px;
     background-color: rgba(0, 0, 0, 0.4);
     padding: 12px;
     border-radius: 10px;
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    gap: 8px; /* Espacio reducido entre elementos */
+    gap: 8px;
 }
 
-input, select {
+/* Estilo para la barra de búsqueda (blanca) */
+#search {
     margin: 0;
     padding: 11px 12px;
     font-size: 14px;
@@ -60,103 +61,114 @@ input, select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    flex: 1 1 auto; /* Permite crecimiento y reducción */
-    min-width: 0; /* Permite que se reduzcan */
-    height: 44px; /* Altura fija para alineación perfecta */
-}
-
-/* Hover específico para el filtro de categorías */
-#search:hover {
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
-}
-
-#category:hover {
-    background-color: #1E1E1EF2 !important; /* Color específico solicitado */
-    color: white !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
-}
-
-/* Ajustes de ancho para móviles */
-#search {
-    flex: 1.2; /* La búsqueda ocupa un poco más de espacio */
+    flex: 1.2;
     min-width: 140px;
-    max-width: 60%; /* Aumentado para mejor visibilidad */
+    max-width: 60%;
+    height: 44px;
 }
 
+/* Estilo para el filtro de categorías (color personalizado) */
 #category {
+    margin: 0;
+    padding: 11px 12px 11px 12px;
+    font-size: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background-color: #1E1E1EF2 !important; /* Color solicitado */
+    color: white !important; /* Texto blanco para contraste */
+    font-family: 'Times New Roman', Times, serif;
+    transition: all 0.2s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     flex: 1;
     min-width: 120px;
-    max-width: 35%; /* Reducido para balance */
+    max-width: 35%;
+    height: 44px;
+    cursor: pointer;
 }
 
-/* Flecha personalizada para el select en móvil */
-.select-wrapper {
+/* Efecto hover para categoría - ligero cambio */
+#category:hover {
+    background-color: #2A2A2AF2 !important; /* Un poco más claro al hover */
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto focus para categoría */
+#category:focus {
+    outline: none;
+    border-color: #007BFF !important;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25) !important;
+    background-color: #1E1E1EF2 !important;
+}
+
+/* Flecha personalizada para el select de categorías */
+.category-wrapper {
     position: relative;
     flex: 1;
     min-width: 120px;
     max-width: 35%;
 }
 
-.select-wrapper::after {
+.category-wrapper::after {
     content: "▼";
     position: absolute;
     top: 50%;
     right: 12px;
     transform: translateY(-50%);
     pointer-events: none;
-    color: #333;
+    color: white !important; /* Flecha blanca para contraste */
     font-size: 10px;
-    transition: color 0.2s ease;
+    transition: transform 0.2s ease;
+    z-index: 2;
 }
 
-/* Cambiar color de flecha en hover */
-#category:hover + .select-wrapper::after,
-.select-wrapper:hover::after {
+/* Animación de la flecha al abrir */
+#category:focus + .category-wrapper::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Estilo para las opciones del select de categorías */
+#category option {
+    background-color: #1E1E1EF2;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+}
+
+/* Estilo para opción seleccionada */
+#category option:checked {
+    background-color: #007BFF !important;
     color: white !important;
 }
 
-/* Foco del select */
-input:focus, select:focus {
+/* Estilo para hover en opciones */
+#category option:hover {
+    background-color: #2A2A2AF2 !important;
+    color: white !important;
+}
+
+/* Estilo cuando está abierto */
+#category:active, #category:focus {
+    background-color: #1E1E1EF2 !important;
+    color: white !important;
+}
+
+/* Efectos para la barra de búsqueda */
+#search:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#search:focus {
     outline: none;
     border-color: #007BFF;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
     background-color: rgba(255, 255, 255, 0.95);
-}
-
-/* Para el foco del select con hover */
-#category:focus:hover {
-    background-color: #1E1E1EF2 !important;
-    color: white !important;
-}
-
-/* Cuando el select está abierto */
-select:active {
-    background-color: rgba(255, 255, 255, 0.95) !important;
-}
-
-/* Cuando una opción está seleccionada */
-select option:checked {
-    background-color: #007BFF;
-    color: white;
-}
-
-/* Cuando se pasa el ratón sobre las opciones dentro del select */
-select option:hover {
-    background-color: #1E1E1EF2 !important;
-    color: white;
-}
-
-/* Estilo para cuando el select tiene un valor seleccionado */
-select:valid {
-    background-color: rgba(255, 255, 255, 0.95);
-    color: #333;
-}
-
-/* Estilo para mantener el color cuando está abierto */
-select:focus option:checked {
-    background-color: #007BFF;
-    color: white;
 }
 
 input::placeholder {
@@ -168,7 +180,7 @@ input::placeholder {
 .gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px; /* Espacio reducido entre imágenes */
+    gap: 10px;
     justify-items: center;
     padding: 5px;
     margin-bottom: 20px;
@@ -179,7 +191,7 @@ input::placeholder {
     overflow: hidden;
     transition: all 0.3s ease;
     width: 100%;
-    height: 170px; /* Altura ajustada */
+    height: 170px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     background-color: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -299,7 +311,7 @@ input::placeholder {
     opacity: 0.6;
 }
 
-/* ========== MEDIA QUERIES MEJORADAS ========== */
+/* ========== MEDIA QUERIES ========== */
 
 /* Móviles muy pequeños (pantallas de menos de 360px) */
 @media (max-width: 359px) {
@@ -317,7 +329,7 @@ input::placeholder {
         gap: 6px;
     }
     
-    input, select {
+    #search, #category {
         padding: 10px 8px;
         font-size: 13px;
         height: 42px;
@@ -332,70 +344,24 @@ input::placeholder {
     #category {
         min-width: 100px;
         max-width: 38%;
-        flex: 1;
     }
     
-    .select-wrapper {
+    .category-wrapper {
         min-width: 100px;
         max-width: 38%;
     }
     
-    .select-wrapper::after {
+    .category-wrapper::after {
         right: 8px;
         font-size: 9px;
     }
     
     .thumbnail {
         height: 150px;
-        border-radius: 8px;
-    }
-    
-    .gallery {
-        gap: 8px;
-        padding: 3px;
-    }
-    
-    .thumbnail img {
-        border-radius: 8px;
     }
     
     input::placeholder {
         font-size: 12px;
-    }
-}
-
-/* Móviles normales (360px - 599px) */
-@media (min-width: 360px) and (max-width: 599px) {
-    .filters {
-        padding: 12px 10px;
-        gap: 8px;
-    }
-    
-    input, select {
-        padding: 11px 10px;
-        font-size: 14px;
-        height: 44px;
-    }
-    
-    #search {
-        min-width: 140px;
-        max-width: 60%;
-        flex: 1.2;
-    }
-    
-    #category {
-        min-width: 120px;
-        max-width: 36%;
-        flex: 1;
-    }
-    
-    .select-wrapper {
-        min-width: 120px;
-        max-width: 36%;
-    }
-    
-    .thumbnail {
-        height: 170px;
     }
 }
 
@@ -415,48 +381,37 @@ input::placeholder {
         gap: 12px;
     }
     
-    input, select {
-        width: auto;
+    #search, #category {
         min-width: 180px;
         padding: 12px 14px;
         font-size: 15px;
         height: 46px;
-        flex: none; /* Desactiva flex en tablets */
     }
     
-    #search, #category {
-        min-width: 180px;
-        max-width: none;
+    #search {
         flex: none;
     }
     
-    .select-wrapper {
-        min-width: 180px;
-        max-width: none;
+    #category {
         flex: none;
     }
     
-    .select-wrapper::after {
+    .category-wrapper {
+        min-width: 180px;
+    }
+    
+    .category-wrapper::after {
         right: 14px;
         font-size: 11px;
     }
     
     .gallery {
-        grid-template-columns: repeat(2, 1fr); /* Mantiene 2 columnas en tablets pequeñas */
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
     
     .thumbnail {
         height: 200px;
-        border-radius: 12px;
-    }
-    
-    .thumbnail img {
-        border-radius: 12px;
-    }
-    
-    input::placeholder {
-        font-size: 14px;
     }
 }
 
@@ -472,30 +427,20 @@ input::placeholder {
         gap: 15px;
     }
     
-    input, select {
+    #search, #category {
         min-width: 200px;
         padding: 13px 16px;
         font-size: 16px;
         height: 48px;
     }
     
-    #search, #category {
-        min-width: 200px;
-    }
-    
     .gallery {
-        grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablets medianas */
+        grid-template-columns: repeat(3, 1fr);
         gap: 18px;
     }
     
     .thumbnail {
         height: 220px;
-    }
-    
-    .pagination button {
-        padding: 13px 26px;
-        font-size: 15px;
-        min-width: 130px;
     }
 }
 
@@ -515,7 +460,7 @@ input::placeholder {
         gap: 18px;
     }
     
-    input, select {
+    #search, #category {
         min-width: 220px;
         padding: 14px 18px;
         font-size: 16px;
@@ -544,7 +489,7 @@ input::placeholder {
         gap: 20px;
     }
     
-    input, select {
+    #search, #category {
         min-width: 240px;
         padding: 15px 20px;
         font-size: 17px;
@@ -558,12 +503,6 @@ input::placeholder {
     
     .thumbnail {
         height: 280px;
-    }
-    
-    .pagination button {
-        padding: 15px 30px;
-        font-size: 16px;
-        min-width: 150px;
     }
 }
 
@@ -583,7 +522,7 @@ input::placeholder {
         gap: 22px;
     }
     
-    input, select {
+    #search, #category {
         min-width: 260px;
         padding: 16px 22px;
         font-size: 18px;
@@ -597,105 +536,24 @@ input::placeholder {
     
     .thumbnail {
         height: 300px;
-        border-radius: 15px;
-    }
-    
-    .thumbnail img {
-        border-radius: 15px;
-    }
-}
-
-/* Ajustes para orientación horizontal en móviles */
-@media (max-height: 500px) and (orientation: landscape) {
-    .container {
-        padding: 8px;
-    }
-    
-    .filters {
-        padding: 10px 12px;
-        margin-bottom: 12px;
-        gap: 10px;
-    }
-    
-    input, select {
-        padding: 10px 12px;
-        height: 42px;
-        font-size: 14px;
-        min-width: 150px;
-    }
-    
-    .gallery {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 8px;
-    }
-    
-    .thumbnail {
-        height: 140px;
-    }
-    
-    h1 {
-        font-size: 1.8rem;
-        margin: 8px 0 12px 0;
-    }
-}
-
-/* Mejora de accesibilidad para alto contraste */
-@media (prefers-contrast: high) {
-    .thumbnail {
-        border: 3px solid white;
-    }
-    
-    .pagination button {
-        border: 2px solid white;
-    }
-    
-    select {
-        border: 2px solid white;
     }
 }
 
 /* Modo oscuro del sistema */
 @media (prefers-color-scheme: dark) {
-    input, select {
+    #search {
         background-color: rgba(30, 30, 30, 0.95);
         color: white;
         border-color: rgba(255, 255, 255, 0.2);
     }
     
-    #search:hover {
-        background-color: rgba(30, 30, 30, 0.95) !important;
-        border-color: rgba(255, 255, 255, 0.2) !important;
-    }
-    
-    #category:hover {
-        background-color: #1E1E1EF2 !important;
-        color: white !important;
-        border-color: rgba(255, 255, 255, 0.2) !important;
-    }
-    
-    .select-wrapper::after {
-        color: white;
-    }
-    
-    #category:hover + .select-wrapper::after,
-    .select-wrapper:hover::after {
-        color: white !important;
-    }
-    
-    input::placeholder {
+    #search::placeholder {
         color: #aaa;
     }
     
-    select:focus {
-        background-color: rgba(30, 30, 30, 0.95) !important;
-    }
-    
-    select:valid {
+    #search:focus {
         background-color: rgba(30, 30, 30, 0.95);
-        color: white;
     }
     
-    select:focus {
-        border-color: #007BFF;
-    }
+    /* El #category ya tiene su color personalizado, no cambia en modo oscuro */
 }
