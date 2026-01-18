@@ -65,6 +65,12 @@ input, select {
     min-width: 0; /* Permite que se reduzcan */
 }
 
+/* Eliminar cambio de color al pasar el ratón */
+input:hover, select:hover {
+    background-color: rgba(255, 255, 255, 0.95) !important; /* Mantiene el mismo color */
+    border-color: rgba(255, 255, 255, 0.3) !important; /* Mantiene el mismo borde */
+}
+
 /* Ajustes específicos para móvil */
 #search {
     min-width: 150px; /* Ancho mínimo para búsqueda */
@@ -114,7 +120,7 @@ select option:checked {
     color: white;
 }
 
-/* Cuando se pasa el ratón sobre las opciones */
+/* Cuando se pasa el ratón sobre las opciones dentro del select */
 select option:hover {
     background-color: #0056b3 !important;
     color: white;
@@ -532,6 +538,12 @@ input::placeholder {
         border-color: rgba(255, 255, 255, 0.2);
     }
     
+    /* Mantener el color en hover en modo oscuro */
+    input:hover, select:hover {
+        background-color: rgba(30, 30, 30, 0.95) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+    
     input::placeholder {
         color: #aaa;
     }
@@ -548,6 +560,10 @@ input::placeholder {
     select:valid {
         background-color: rgba(30, 30, 30, 0.95);
         color: white;
+    }
+    
+    select:focus {
+        border-color: #007BFF;
     }
 }
 
