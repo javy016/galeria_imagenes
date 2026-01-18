@@ -34,52 +34,60 @@ h1 {
 /* Filtros y búsqueda - Mobile First (ahora en una línea) */
 .filters {
     display: flex;
-    flex-direction: row; /* Cambiado de column a row */
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Evita que se rompa en móviles */
     margin-bottom: 20px;
     background-color: rgba(0, 0, 0, 0.4);
-    padding: 15px 10px;
-    border-radius: 12px;
+    padding: 12px;
+    border-radius: 10px;
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    gap: 10px; /* Espacio entre elementos */
+    gap: 8px; /* Espacio reducido entre elementos */
 }
 
 input, select {
     margin: 0;
-    padding: 10px 12px;
-    font-size: 15px;
+    padding: 11px 12px;
+    font-size: 14px;
     border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
+    border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.95);
     color: #333;
     font-family: 'Times New Roman', Times, serif;
-    transition: all 0.3s ease;
-    /* Elimina estilos por defecto del navegador */
+    transition: all 0.2s ease;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    flex: 1; /* Permite que se ajusten */
+    flex: 1 1 auto; /* Permite crecimiento y reducción */
     min-width: 0; /* Permite que se reduzcan */
+    height: 44px; /* Altura fija para alineación perfecta */
 }
 
-/* Eliminar cambio de color al pasar el ratón */
-input:hover, select:hover {
-    background-color: rgba(255, 255, 255, 0.95) !important; /* Mantiene el mismo color */
-    border-color: rgba(255, 255, 255, 0.3) !important; /* Mantiene el mismo borde */
+/* Hover específico para el filtro de categorías */
+#search:hover {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-/* Ajustes específicos para móvil */
+#category:hover {
+    background-color: #1E1E1EF2 !important; /* Color específico solicitado */
+    color: white !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Ajustes de ancho para móviles */
 #search {
-    min-width: 150px; /* Ancho mínimo para búsqueda */
-    max-width: 55%; /* Máximo 55% del contenedor */
+    flex: 1.2; /* La búsqueda ocupa un poco más de espacio */
+    min-width: 140px;
+    max-width: 60%; /* Aumentado para mejor visibilidad */
 }
 
 #category {
-    min-width: 120px; /* Ancho mínimo para categoría */
-    max-width: 40%; /* Máximo 40% del contenedor */
+    flex: 1;
+    min-width: 120px;
+    max-width: 35%; /* Reducido para balance */
 }
 
 /* Flecha personalizada para el select en móvil */
@@ -87,7 +95,7 @@ input:hover, select:hover {
     position: relative;
     flex: 1;
     min-width: 120px;
-    max-width: 40%;
+    max-width: 35%;
 }
 
 .select-wrapper::after {
@@ -99,14 +107,27 @@ input:hover, select:hover {
     pointer-events: none;
     color: #333;
     font-size: 10px;
+    transition: color 0.2s ease;
 }
 
-/* Foco del select - IMPORTANTE: mantener color */
+/* Cambiar color de flecha en hover */
+#category:hover + .select-wrapper::after,
+.select-wrapper:hover::after {
+    color: white !important;
+}
+
+/* Foco del select */
 input:focus, select:focus {
     outline: none;
     border-color: #007BFF;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
     background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Para el foco del select con hover */
+#category:focus:hover {
+    background-color: #1E1E1EF2 !important;
+    color: white !important;
 }
 
 /* Cuando el select está abierto */
@@ -122,7 +143,7 @@ select option:checked {
 
 /* Cuando se pasa el ratón sobre las opciones dentro del select */
 select option:hover {
-    background-color: #0056b3 !important;
+    background-color: #1E1E1EF2 !important;
     color: white;
 }
 
@@ -132,7 +153,7 @@ select:valid {
     color: #333;
 }
 
-/* Estilo para mantener el color cuando está abierto en diferentes navegadores */
+/* Estilo para mantener el color cuando está abierto */
 select:focus option:checked {
     background-color: #007BFF;
     color: white;
@@ -140,26 +161,26 @@ select:focus option:checked {
 
 input::placeholder {
     color: #666;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* Galería - Mobile First con 2 columnas en móviles */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en móviles */
-    gap: 12px; /* Espacio reducido entre imágenes */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; /* Espacio reducido entre imágenes */
     justify-items: center;
     padding: 5px;
     margin-bottom: 20px;
 }
 
 .thumbnail {
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
     transition: all 0.3s ease;
     width: 100%;
-    height: 180px; /* Altura reducida para móviles */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    height: 170px; /* Altura ajustada */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     background-color: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
@@ -167,14 +188,14 @@ input::placeholder {
 
 .thumbnail:hover {
     transform: scale(1.03);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .thumbnail img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 10px;
     display: block;
 }
 
@@ -243,21 +264,21 @@ input::placeholder {
     padding: 12px;
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
 .pagination button {
-    padding: 12px 24px;
-    font-size: 15px;
+    padding: 12px 22px;
+    font-size: 14px;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     background-color: rgba(0, 123, 255, 0.9);
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Times New Roman', Times, serif;
-    min-width: 120px;
+    min-width: 110px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -265,7 +286,7 @@ input::placeholder {
 .pagination button:hover:not(:disabled) {
     background-color: #0056b3;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 }
 
 .pagination button:active:not(:disabled) {
@@ -278,144 +299,227 @@ input::placeholder {
     opacity: 0.6;
 }
 
-/* Media Queries para Responsividad */
+/* ========== MEDIA QUERIES MEJORADAS ========== */
 
-/* Móviles pequeños (pantallas de menos de 400px) - Ajustes específicos */
-@media (max-width: 399px) {
+/* Móviles muy pequeños (pantallas de menos de 360px) */
+@media (max-width: 359px) {
+    .container {
+        padding: 10px;
+    }
+    
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         margin: 10px 0 15px 0;
     }
     
     .filters {
-        padding: 12px 8px;
-        gap: 8px;
+        padding: 10px 8px;
+        gap: 6px;
     }
     
     input, select {
-        padding: 9px 10px;
-        font-size: 14px;
+        padding: 10px 8px;
+        font-size: 13px;
+        height: 42px;
     }
     
     #search {
-        min-width: 130px;
-        max-width: 52%;
+        min-width: 120px;
+        max-width: 58%;
+        flex: 1.3;
     }
     
     #category {
-        min-width: 110px;
-        max-width: 42%;
+        min-width: 100px;
+        max-width: 38%;
+        flex: 1;
+    }
+    
+    .select-wrapper {
+        min-width: 100px;
+        max-width: 38%;
+    }
+    
+    .select-wrapper::after {
+        right: 8px;
+        font-size: 9px;
     }
     
     .thumbnail {
-        height: 160px; /* Altura aún más reducida para móviles pequeños */
-        border-radius: 10px;
+        height: 150px;
+        border-radius: 8px;
     }
     
     .gallery {
-        gap: 10px;
+        gap: 8px;
         padding: 3px;
     }
     
     .thumbnail img {
-        border-radius: 10px;
-    }
-    
-    .pagination {
-        padding: 10px;
-        gap: 10px;
-    }
-    
-    .pagination button {
-        padding: 10px 20px;
-        font-size: 14px;
-        min-width: 110px;
+        border-radius: 8px;
     }
     
     input::placeholder {
-        font-size: 13px;
+        font-size: 12px;
     }
 }
 
-/* Tablets (pantallas de 600px o más) */
-@media (min-width: 600px) {
+/* Móviles normales (360px - 599px) */
+@media (min-width: 360px) and (max-width: 599px) {
+    .filters {
+        padding: 12px 10px;
+        gap: 8px;
+    }
+    
+    input, select {
+        padding: 11px 10px;
+        font-size: 14px;
+        height: 44px;
+    }
+    
+    #search {
+        min-width: 140px;
+        max-width: 60%;
+        flex: 1.2;
+    }
+    
+    #category {
+        min-width: 120px;
+        max-width: 36%;
+        flex: 1;
+    }
+    
+    .select-wrapper {
+        min-width: 120px;
+        max-width: 36%;
+    }
+    
+    .thumbnail {
+        height: 170px;
+    }
+}
+
+/* Tablets pequeñas (600px - 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
     .container {
-        padding: 20px;
+        padding: 18px;
     }
     
     h1 {
-        font-size: 2.3rem;
-        margin: 20px 0 25px 0;
+        font-size: 2.1rem;
+        margin: 18px 0 22px 0;
     }
     
     .filters {
-        flex-direction: row;
-        justify-content: center;
-        gap: 15px;
-        padding: 18px;
+        padding: 15px;
+        gap: 12px;
     }
     
     input, select {
         width: auto;
+        min-width: 180px;
+        padding: 12px 14px;
+        font-size: 15px;
+        height: 46px;
+        flex: none; /* Desactiva flex en tablets */
+    }
+    
+    #search, #category {
+        min-width: 180px;
+        max-width: none;
+        flex: none;
+    }
+    
+    .select-wrapper {
+        min-width: 180px;
+        max-width: none;
+        flex: none;
+    }
+    
+    .select-wrapper::after {
+        right: 14px;
+        font-size: 11px;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); /* Mantiene 2 columnas en tablets pequeñas */
+        gap: 15px;
+    }
+    
+    .thumbnail {
+        height: 200px;
+        border-radius: 12px;
+    }
+    
+    .thumbnail img {
+        border-radius: 12px;
+    }
+    
+    input::placeholder {
+        font-size: 14px;
+    }
+}
+
+/* Tablets medianas (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    h1 {
+        font-size: 2.5rem;
+        margin: 22px 0 26px 0;
+    }
+    
+    .filters {
+        padding: 18px;
+        gap: 15px;
+    }
+    
+    input, select {
         min-width: 200px;
-        margin: 0;
-        padding: 12px 15px;
+        padding: 13px 16px;
         font-size: 16px;
+        height: 48px;
     }
     
     #search, #category {
         min-width: 200px;
-        max-width: none;
-    }
-    
-    .select-wrapper {
-        min-width: 200px;
-        max-width: none;
-    }
-    
-    .select-wrapper::after {
-        right: 15px;
-        font-size: 12px;
     }
     
     .gallery {
-        grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablets */
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablets medianas */
         gap: 18px;
     }
     
     .thumbnail {
-        height: 220px; /* Altura mayor en tablets */
-        border-radius: 15px;
+        height: 220px;
     }
     
-    .thumbnail img {
-        border-radius: 15px;
-    }
-    
-    .modal-content {
-        width: 90%;
-    }
-    
-    input::placeholder {
+    .pagination button {
+        padding: 13px 26px;
         font-size: 15px;
+        min-width: 130px;
     }
 }
 
-/* Tablets grandes y laptops pequeños (pantallas de 768px o más) */
-@media (min-width: 768px) {
+/* Tablets grandes y laptops pequeños (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        padding: 22px;
+    }
+    
     h1 {
-        font-size: 2.7rem;
-        margin: 25px 0 30px 0;
+        font-size: 2.8rem;
+        margin: 24px 0 28px 0;
     }
     
     .filters {
         padding: 20px;
-        gap: 20px;
+        gap: 18px;
     }
     
     input, select {
         min-width: 220px;
-        padding: 13px 16px;
+        padding: 14px 18px;
+        font-size: 16px;
+        height: 50px;
     }
     
     .gallery {
@@ -426,22 +530,25 @@ input::placeholder {
     .thumbnail {
         height: 250px;
     }
-    
-    .pagination button {
-        padding: 14px 28px;
-        font-size: 16px;
-        min-width: 140px;
-    }
 }
 
-/* Laptops y desktops (pantallas de 992px o más) */
-@media (min-width: 992px) {
-    .container {
-        padding: 25px;
+/* Laptops y desktops (1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    h1 {
+        font-size: 3.1rem;
+        margin: 26px 0 30px 0;
     }
     
-    h1 {
-        font-size: 3rem;
+    .filters {
+        padding: 22px;
+        gap: 20px;
+    }
+    
+    input, select {
+        min-width: 240px;
+        padding: 15px 20px;
+        font-size: 17px;
+        height: 52px;
     }
     
     .gallery {
@@ -453,65 +560,82 @@ input::placeholder {
         height: 280px;
     }
     
-    .modal-content {
-        max-width: 900px;
+    .pagination button {
+        padding: 15px 30px;
+        font-size: 16px;
+        min-width: 150px;
     }
 }
 
-/* Desktops grandes (pantallas de 1200px o más) */
-@media (min-width: 1200px) {
+/* Desktops grandes (1400px o más) */
+@media (min-width: 1400px) {
+    .container {
+        padding: 25px;
+    }
+    
+    h1 {
+        font-size: 3.4rem;
+        margin: 28px 0 32px 0;
+    }
+    
+    .filters {
+        padding: 24px;
+        gap: 22px;
+    }
+    
+    input, select {
+        min-width: 260px;
+        padding: 16px 22px;
+        font-size: 18px;
+        height: 54px;
+    }
+    
     .gallery {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
     }
     
     .thumbnail {
         height: 300px;
+        border-radius: 15px;
     }
     
-    h1 {
-        font-size: 3.3rem;
-    }
-}
-
-/* Desktops muy grandes (pantallas de 1400px o más) */
-@media (min-width: 1400px) {
-    .gallery {
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas muy grandes */
-        gap: 30px;
-    }
-    
-    .thumbnail {
-        height: 320px;
+    .thumbnail img {
+        border-radius: 15px;
     }
 }
 
 /* Ajustes para orientación horizontal en móviles */
 @media (max-height: 500px) and (orientation: landscape) {
-    .gallery {
-        grid-template-columns: repeat(3, 1fr);
+    .container {
+        padding: 8px;
+    }
+    
+    .filters {
+        padding: 10px 12px;
+        margin-bottom: 12px;
         gap: 10px;
     }
     
+    input, select {
+        padding: 10px 12px;
+        height: 42px;
+        font-size: 14px;
+        min-width: 150px;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+    
     .thumbnail {
-        height: 160px;
+        height: 140px;
     }
     
     h1 {
         font-size: 1.8rem;
-        margin: 10px 0 15px 0;
-    }
-    
-    .filters {
-        flex-direction: row;
-        padding: 12px 15px;
-        margin-bottom: 15px;
-        gap: 12px;
-    }
-    
-    input, select {
-        min-width: 150px;
-        padding: 10px 12px;
+        margin: 8px 0 12px 0;
     }
 }
 
@@ -538,21 +662,30 @@ input::placeholder {
         border-color: rgba(255, 255, 255, 0.2);
     }
     
-    /* Mantener el color en hover en modo oscuro */
-    input:hover, select:hover {
+    #search:hover {
         background-color: rgba(30, 30, 30, 0.95) !important;
         border-color: rgba(255, 255, 255, 0.2) !important;
     }
     
-    input::placeholder {
-        color: #aaa;
+    #category:hover {
+        background-color: #1E1E1EF2 !important;
+        color: white !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
     }
     
     .select-wrapper::after {
         color: white;
     }
     
-    /* Mantener color cuando está seleccionado en modo oscuro */
+    #category:hover + .select-wrapper::after,
+    .select-wrapper:hover::after {
+        color: white !important;
+    }
+    
+    input::placeholder {
+        color: #aaa;
+    }
+    
     select:focus {
         background-color: rgba(30, 30, 30, 0.95) !important;
     }
@@ -564,21 +697,5 @@ input::placeholder {
     
     select:focus {
         border-color: #007BFF;
-    }
-}
-
-/* Ajuste para cuando el teclado se abre en móviles */
-@media (max-height: 500px) {
-    .container {
-        padding: 10px;
-    }
-    
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    }
-    
-    .thumbnail {
-        height: 140px;
     }
 }
