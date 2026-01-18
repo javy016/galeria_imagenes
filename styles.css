@@ -25,31 +25,32 @@ body {
 
 h1 {
     color: white;
-    margin: 15px 0 25px 0;
+    margin: 15px 0 20px 0;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.2;
 }
 
-/* Filtros y búsqueda - Mobile First */
+/* Filtros y búsqueda - Mobile First (ahora en una línea) */
 .filters {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Cambiado de column a row */
     align-items: center;
-    margin-bottom: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
     background-color: rgba(0, 0, 0, 0.4);
-    padding: 20px;
+    padding: 15px 10px;
     border-radius: 12px;
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 10px; /* Espacio entre elementos */
 }
 
 input, select {
-    margin: 8px 0;
-    padding: 12px 15px;
-    width: 100%;
-    max-width: 400px;
-    font-size: 16px;
+    margin: 0;
+    padding: 10px 12px;
+    font-size: 15px;
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.95);
@@ -60,6 +61,38 @@ input, select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    flex: 1; /* Permite que se ajusten */
+    min-width: 0; /* Permite que se reduzcan */
+}
+
+/* Ajustes específicos para móvil */
+#search {
+    min-width: 150px; /* Ancho mínimo para búsqueda */
+    max-width: 55%; /* Máximo 55% del contenedor */
+}
+
+#category {
+    min-width: 120px; /* Ancho mínimo para categoría */
+    max-width: 40%; /* Máximo 40% del contenedor */
+}
+
+/* Flecha personalizada para el select en móvil */
+.select-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 120px;
+    max-width: 40%;
+}
+
+.select-wrapper::after {
+    content: "▼";
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #333;
+    font-size: 10px;
 }
 
 /* Foco del select - IMPORTANTE: mantener color */
@@ -67,7 +100,7 @@ input:focus, select:focus {
     outline: none;
     border-color: #007BFF;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-    background-color: rgba(255, 255, 255, 0.95); /* Mantiene el color de fondo */
+    background-color: rgba(255, 255, 255, 0.95);
 }
 
 /* Cuando el select está abierto */
@@ -101,45 +134,26 @@ select:focus option:checked {
 
 input::placeholder {
     color: #666;
+    font-size: 14px;
 }
 
-/* Flecha personalizada para el select */
-.select-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    margin: 8px 0;
-}
-
-.select-wrapper::after {
-    content: "▼";
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: #333;
-    font-size: 12px;
-}
-
-/* Galería - Mobile First */
+/* Galería - Mobile First con 2 columnas en móviles */
 .gallery {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en móviles */
+    gap: 12px; /* Espacio reducido entre imágenes */
     justify-items: center;
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 20px;
 }
 
 .thumbnail {
-    border-radius: 15px;
+    border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
     width: 100%;
-    max-width: 400px;
-    height: 220px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    height: 180px; /* Altura reducida para móviles */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     background-color: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
@@ -147,14 +161,14 @@ input::placeholder {
 
 .thumbnail:hover {
     transform: scale(1.03);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .thumbnail img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: 12px;
     display: block;
 }
 
@@ -194,17 +208,17 @@ input::placeholder {
 
 .close {
     position: fixed;
-    top: 20px;
-    right: 25px;
+    top: 15px;
+    right: 20px;
     color: white;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 1001;
     background-color: rgba(0, 0, 0, 0.5);
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -219,17 +233,17 @@ input::placeholder {
 
 /* Paginación */
 .pagination {
-    margin-top: 25px;
-    padding: 15px;
+    margin-top: 20px;
+    padding: 12px;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
 .pagination button {
-    padding: 14px 28px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 15px;
     border: none;
     border-radius: 8px;
     background-color: rgba(0, 123, 255, 0.9);
@@ -237,7 +251,7 @@ input::placeholder {
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Times New Roman', Times, serif;
-    min-width: 140px;
+    min-width: 120px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -260,6 +274,63 @@ input::placeholder {
 
 /* Media Queries para Responsividad */
 
+/* Móviles pequeños (pantallas de menos de 400px) - Ajustes específicos */
+@media (max-width: 399px) {
+    h1 {
+        font-size: 1.5rem;
+        margin: 10px 0 15px 0;
+    }
+    
+    .filters {
+        padding: 12px 8px;
+        gap: 8px;
+    }
+    
+    input, select {
+        padding: 9px 10px;
+        font-size: 14px;
+    }
+    
+    #search {
+        min-width: 130px;
+        max-width: 52%;
+    }
+    
+    #category {
+        min-width: 110px;
+        max-width: 42%;
+    }
+    
+    .thumbnail {
+        height: 160px; /* Altura aún más reducida para móviles pequeños */
+        border-radius: 10px;
+    }
+    
+    .gallery {
+        gap: 10px;
+        padding: 3px;
+    }
+    
+    .thumbnail img {
+        border-radius: 10px;
+    }
+    
+    .pagination {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .pagination button {
+        padding: 10px 20px;
+        font-size: 14px;
+        min-width: 110px;
+    }
+    
+    input::placeholder {
+        font-size: 13px;
+    }
+}
+
 /* Tablets (pantallas de 600px o más) */
 @media (min-width: 600px) {
     .container {
@@ -267,70 +338,104 @@ input::placeholder {
     }
     
     h1 {
-        font-size: 2.5rem;
-        margin: 20px 0 30px 0;
+        font-size: 2.3rem;
+        margin: 20px 0 25px 0;
     }
     
     .filters {
         flex-direction: row;
         justify-content: center;
         gap: 15px;
-        padding: 20px;
+        padding: 18px;
     }
     
     input, select {
         width: auto;
-        min-width: 180px;
+        min-width: 200px;
         margin: 0;
+        padding: 12px 15px;
+        font-size: 16px;
+    }
+    
+    #search, #category {
+        min-width: 200px;
+        max-width: none;
     }
     
     .select-wrapper {
-        width: auto;
-        min-width: 180px;
-        margin: 0;
+        min-width: 200px;
+        max-width: none;
+    }
+    
+    .select-wrapper::after {
+        right: 15px;
+        font-size: 12px;
     }
     
     .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablets */
+        gap: 18px;
     }
     
     .thumbnail {
-        height: 250px;
-        max-width: none;
+        height: 220px; /* Altura mayor en tablets */
+        border-radius: 15px;
+    }
+    
+    .thumbnail img {
+        border-radius: 15px;
     }
     
     .modal-content {
         width: 90%;
+    }
+    
+    input::placeholder {
+        font-size: 15px;
     }
 }
 
 /* Tablets grandes y laptops pequeños (pantallas de 768px o más) */
 @media (min-width: 768px) {
     h1 {
-        font-size: 3rem;
+        font-size: 2.7rem;
+        margin: 25px 0 30px 0;
+    }
+    
+    .filters {
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    input, select {
+        min-width: 220px;
+        padding: 13px 16px;
     }
     
     .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
     }
     
     .thumbnail {
-        height: 280px;
+        height: 250px;
     }
     
     .pagination button {
-        padding: 16px 32px;
-        font-size: 18px;
-        min-width: 160px;
+        padding: 14px 28px;
+        font-size: 16px;
+        min-width: 140px;
     }
 }
 
 /* Laptops y desktops (pantallas de 992px o más) */
 @media (min-width: 992px) {
     .container {
-        padding: 30px;
+        padding: 25px;
+    }
+    
+    h1 {
+        font-size: 3rem;
     }
     
     .gallery {
@@ -339,7 +444,7 @@ input::placeholder {
     }
     
     .thumbnail {
-        height: 300px;
+        height: 280px;
     }
     
     .modal-content {
@@ -355,48 +460,23 @@ input::placeholder {
     }
     
     .thumbnail {
-        height: 320px;
+        height: 300px;
     }
     
     h1 {
-        font-size: 3.5rem;
+        font-size: 3.3rem;
     }
 }
 
 /* Desktops muy grandes (pantallas de 1400px o más) */
 @media (min-width: 1400px) {
     .gallery {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 35px;
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas muy grandes */
+        gap: 30px;
     }
     
     .thumbnail {
-        height: 350px;
-    }
-}
-
-/* Ajustes para dispositivos muy pequeños (menos de 400px) */
-@media (max-width: 399px) {
-    h1 {
-        font-size: 1.6rem;
-    }
-    
-    .thumbnail {
-        height: 200px;
-    }
-    
-    .pagination {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .pagination button {
-        width: 100%;
-        max-width: 280px;
-    }
-    
-    .filters {
-        padding: 15px 10px;
+        height: 320px;
     }
 }
 
@@ -408,7 +488,7 @@ input::placeholder {
     }
     
     .thumbnail {
-        height: 180px;
+        height: 160px;
     }
     
     h1 {
@@ -418,8 +498,14 @@ input::placeholder {
     
     .filters {
         flex-direction: row;
-        padding: 10px 15px;
+        padding: 12px 15px;
         margin-bottom: 15px;
+        gap: 12px;
+    }
+    
+    input, select {
+        min-width: 150px;
+        padding: 10px 12px;
     }
 }
 
@@ -462,5 +548,21 @@ input::placeholder {
     select:valid {
         background-color: rgba(30, 30, 30, 0.95);
         color: white;
+    }
+}
+
+/* Ajuste para cuando el teclado se abre en móviles */
+@media (max-height: 500px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .thumbnail {
+        height: 140px;
     }
 }
