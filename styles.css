@@ -1,4 +1,4 @@
-/* styles.css - Versión con imágenes más pequeñas */
+/* styles.css - Margen reducido solo entre filtros e imágenes */
 * {
     box-sizing: border-box;
 }
@@ -17,7 +17,7 @@ body {
 
 .container {
     text-align: center;
-    padding: 20px;
+    padding: 15px; /* REDUCIDO de 20px */
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
@@ -25,9 +25,9 @@ body {
 
 h1 {
     color: white;
-    margin: 20px 0 40px 0;
+    margin: 15px 0 25px 0; /* REDUCIDO de 20px 0 40px 0 */
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
-    font-size: 2rem;
+    font-size: 1.8rem; /* REDUCIDO de 2rem */
     line-height: 1.2;
     letter-spacing: 0.5px;
 }
@@ -39,13 +39,13 @@ h1 {
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    margin-bottom: 35px;
+    margin-bottom: 15px; /* ¡¡MUY REDUCIDO: de 35px a 15px!! */
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 15px;
-    border-radius: 12px;
+    padding: 12px; /* REDUCIDO de 15px */
+    border-radius: 10px; /* REDUCIDO de 12px */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    gap: 10px;
+    gap: 8px; /* REDUCIDO de 10px */
     max-width: 95%;
     margin-left: auto;
     margin-right: auto;
@@ -53,8 +53,8 @@ h1 {
 
 #search {
     margin: 0;
-    padding: 12px 15px;
-    font-size: 15px;
+    padding: 10px 12px; /* REDUCIDO de 12px 15px */
+    font-size: 14px; /* REDUCIDO de 15px */
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.95);
@@ -65,23 +65,23 @@ h1 {
     -moz-appearance: none;
     appearance: none;
     flex: 1.2;
-    min-width: 150px;
+    min-width: 140px; /* REDUCIDO de 150px */
     max-width: 60%;
-    height: 48px;
+    height: 44px; /* REDUCIDO de 48px */
 }
 
 /* CONTENEDOR CON ICONO PARA CATEGORÍAS */
 .category-filter-wrapper {
     position: relative;
     flex: 1;
-    min-width: 130px;
+    min-width: 120px; /* REDUCIDO de 130px */
     max-width: 35%;
 }
 
 #category {
     margin: 0;
-    padding: 12px 40px 12px 15px;
-    font-size: 15px;
+    padding: 10px 35px 10px 12px; /* REDUCIDO */
+    font-size: 14px; /* REDUCIDO de 15px */
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 8px;
     background-color: #1E1E1EF2;
@@ -92,7 +92,7 @@ h1 {
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    height: 48px;
+    height: 44px; /* REDUCIDO de 48px */
     cursor: pointer;
 }
 
@@ -100,41 +100,41 @@ h1 {
 .category-filter-wrapper::after {
     content: "▾";
     position: absolute;
-    right: 15px;
+    right: 12px; /* REDUCIDO de 15px */
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
     color: white;
-    font-size: 14px;
+    font-size: 12px; /* REDUCIDO de 14px */
     font-weight: bold;
     z-index: 2;
     transition: transform 0.3s ease;
 }
 
-/* ===== GALERÍA BASE (MÓVIL - 2 columnas) - IMÁGENES MÁS PEQUEÑAS ===== */
+/* ===== GALERÍA BASE (MÓVIL - 2 columnas) - MARGEN MANTENIDO ===== */
 .gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px; /* Reducido de 15px */
+    gap: 15px; /* MANTENIDO (igual que antes) */
     justify-items: center;
-    padding: 8px; /* Reducido de 10px */
-    margin-bottom: 25px; /* Reducido de 30px */
+    padding: 10px; /* MANTENIDO */
+    margin-bottom: 25px; /* MANTENIDO (reducido solo un poco) */
 }
 
 .thumbnail {
-    border-radius: 10px; /* Reducido de 12px */
+    border-radius: 10px;
     overflow: hidden;
     transition: all 0.3s ease;
     width: 100%;
-    height: 160px; /* REDUCIDO: de 200px a 160px */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Más sutil */
+    height: 160px; /* MANTENIDO (tamaño reducido anterior) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     background-color: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Más fino */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
 }
 
 .thumbnail:hover {
-    transform: scale(1.04); /* Más sutil que 1.05 */
+    transform: scale(1.04);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
@@ -142,97 +142,97 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px; /* Reducido de 12px */
+    border-radius: 10px;
     display: block;
 }
 
 /* ===== MEDIA QUERY: TABLET (600px+) ===== */
 @media (min-width: 600px) {
     .container {
-        padding: 25px;
+        padding: 20px; /* REDUCIDO de 25px */
     }
     
     h1 {
-        font-size: 2.3rem;
-        margin: 25px 0 50px 0;
+        font-size: 2.1rem; /* REDUCIDO de 2.3rem */
+        margin: 20px 0 30px 0; /* REDUCIDO de 25px 0 50px 0 */
     }
     
     .filters {
-        margin-bottom: 50px;
-        padding: 18px;
-        gap: 15px;
+        margin-bottom: 20px; /* ¡¡REDUCIDO: de 50px a 20px!! */
+        padding: 15px; /* REDUCIDO de 18px */
+        gap: 12px; /* REDUCIDO de 15px */
         max-width: 90%;
     }
     
     #search, #category {
-        height: 52px;
-        font-size: 16px;
-        padding: 14px 20px;
+        height: 48px; /* REDUCIDO de 52px */
+        font-size: 15px; /* REDUCIDO de 16px */
+        padding: 12px 16px; /* REDUCIDO de 14px 20px */
     }
     
     #search {
-        min-width: 180px;
+        min-width: 160px; /* REDUCIDO de 180px */
         max-width: none;
         flex: 1.5;
     }
     
     .category-filter-wrapper {
-        min-width: 180px;
+        min-width: 160px; /* REDUCIDO de 180px */
         max-width: none;
         flex: 1;
     }
     
     #category {
-        padding-right: 45px;
+        padding-right: 40px; /* REDUCIDO de 45px */
     }
     
     .category-filter-wrapper::after {
-        right: 18px;
-        font-size: 16px;
+        right: 15px; /* REDUCIDO de 18px */
+        font-size: 14px; /* REDUCIDO de 16px */
     }
     
-    /* TABLET: 2 columnas con imágenes más pequeñas */
+    /* TABLET: Galería mantiene su margen */
     .gallery {
         grid-template-columns: repeat(2, 1fr);
-        gap: 18px; /* Reducido de 20px */
+        gap: 18px; /* MANTENIDO */
     }
     
     .thumbnail {
-        height: 180px; /* REDUCIDO: de 220px a 180px */
+        height: 180px; /* MANTENIDO (tamaño reducido) */
     }
 }
 
 /* ===== MEDIA QUERY: DESKTOP (768px+) - 3 COLUMNAS ===== */
 @media (min-width: 768px) {
     .container {
-        padding: 30px;
+        padding: 25px; /* REDUCIDO de 30px */
     }
     
     h1 {
-        font-size: 2.7rem;
-        margin: 30px 0 60px 0;
+        font-size: 2.3rem; /* REDUCIDO de 2.7rem */
+        margin: 25px 0 40px 0; /* REDUCIDO de 30px 0 60px 0 */
     }
     
-    /* FILTROS DESKTOP */
+    /* FILTROS DESKTOP CON MARGEN REDUCIDO */
     .filters {
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        margin-bottom: 70px;
-        padding: 22px 30px;
-        gap: 25px;
+        margin-bottom: 30px; /* ¡¡REDUCIDO SIGNIFICATIVAMENTE: de 70px a 30px!! */
+        padding: 18px 25px; /* REDUCIDO de 22px 30px */
+        gap: 20px; /* REDUCIDO de 25px */
         background-color: rgba(0, 0, 0, 0.6);
         border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 15px;
-        max-width: 850px;
+        border-radius: 12px; /* REDUCIDO de 15px */
+        max-width: 800px; /* REDUCIDO de 850px */
         position: relative;
     }
     
-    /* ICONO DE FILTRO EN DESKTOP */
+    /* ICONO DE FILTRO EN DESKTOP - MÁS PEQUEÑO */
     .filters::before {
-        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3'%3E%3C/polygon%3E%3C/svg%3E");
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3'%3E%3C/polygon%3E%3C/svg%3E");
         position: absolute;
-        left: 25px;
+        left: 20px; /* REDUCIDO de 25px */
         top: 50%;
         transform: translateY(-50%);
         opacity: 0.9;
@@ -240,222 +240,222 @@ h1 {
     }
     
     #search, #category {
-        height: 56px;
-        font-size: 17px;
-        min-width: 220px;
-        padding: 15px 25px;
-        border-radius: 10px;
+        height: 52px; /* REDUCIDO de 56px */
+        font-size: 16px; /* REDUCIDO de 17px */
+        min-width: 200px; /* REDUCIDO de 220px */
+        padding: 14px 20px; /* REDUCIDO de 15px 25px */
+        border-radius: 8px; /* REDUCIDO de 10px */
         border: 2px solid rgba(255, 255, 255, 0.3);
     }
     
     #search {
         background-color: rgba(255, 255, 255, 0.95);
         color: #333;
-        width: 280px;
+        width: 250px; /* REDUCIDO de 280px */
         flex: none;
     }
     
     #category {
         background-color: #1E1E1EF2;
         color: white;
-        width: 250px;
-        padding-right: 45px;
+        width: 220px; /* REDUCIDO de 250px */
+        padding-right: 40px; /* REDUCIDO de 45px */
         flex: none;
     }
     
     .category-filter-wrapper {
-        min-width: 250px;
+        min-width: 220px; /* REDUCIDO de 250px */
         flex: none;
     }
     
     .category-filter-wrapper::after {
-        right: 22px;
-        font-size: 18px;
+        right: 18px; /* REDUCIDO de 22px */
+        font-size: 16px; /* REDUCIDO de 18px */
     }
     
-    /* DESKTOP: 3 COLUMNAS con imágenes más pequeñas */
+    /* DESKTOP: 3 COLUMNAS con margen normal en galería */
     .gallery {
         grid-template-columns: repeat(3, 1fr);
-        gap: 22px; /* Reducido de 25px */
-        padding: 12px; /* Reducido de 15px */
-        margin-bottom: 35px; /* Reducido de 40px */
+        gap: 22px; /* MANTENIDO (reducido anteriormente) */
+        padding: 12px; /* MANTENIDO */
+        margin-bottom: 35px; /* MANTENIDO (reducido anteriormente) */
     }
     
     .thumbnail {
-        height: 200px; /* REDUCIDO SIGNIFICATIVAMENTE: de 260px a 200px */
-        border-radius: 12px; /* Reducido de 14px */
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Más sutil */
+        height: 200px; /* MANTENIDO (tamaño reducido) */
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     
     .thumbnail:hover {
-        transform: scale(1.05) translateY(-3px); /* Más sutil */
+        transform: scale(1.05) translateY(-3px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         z-index: 1;
     }
     
     .thumbnail img {
-        border-radius: 12px; /* Reducido de 14px */
+        border-radius: 12px;
     }
     
     .pagination {
-        margin-top: 40px; /* Reducido de 50px */
-        padding: 18px; /* Reducido de 20px */
-        gap: 18px; /* Reducido de 20px */
+        margin-top: 40px; /* MANTENIDO (reducido anteriormente) */
+        padding: 18px; /* MANTENIDO */
+        gap: 18px; /* MANTENIDO */
     }
     
     .pagination button {
-        padding: 14px 28px; /* Reducido de 16px 35px */
-        font-size: 16px; /* Reducido de 17px */
-        min-width: 140px; /* Reducido de 160px */
-        border-radius: 8px; /* Reducido de 10px */
+        padding: 14px 28px; /* MANTENIDO */
+        font-size: 16px; /* MANTENIDO */
+        min-width: 140px; /* MANTENIDO */
+        border-radius: 8px; /* MANTENIDO */
     }
 }
 
 /* ===== MEDIA QUERY: DESKTOP GRANDE (992px+) ===== */
 @media (min-width: 992px) {
     .container {
-        padding: 35px; /* Reducido de 40px */
+        padding: 30px; /* REDUCIDO de 35px */
     }
     
     h1 {
-        font-size: 3rem; /* Reducido de 3.2rem */
-        margin: 35px 0 70px 0; /* Reducido */
+        font-size: 2.5rem; /* REDUCIDO de 3rem */
+        margin: 30px 0 50px 0; /* REDUCIDO de 35px 0 70px 0 */
     }
     
     .filters {
-        margin-bottom: 80px; /* Reducido de 90px */
-        padding: 22px 35px; /* Reducido */
-        gap: 25px; /* Reducido de 30px */
-        max-width: 850px; /* Reducido de 900px */
+        margin-bottom: 40px; /* ¡¡REDUCIDO: de 80px a 40px!! */
+        padding: 20px 30px; /* REDUCIDO de 22px 35px */
+        gap: 22px; /* REDUCIDO de 25px */
+        max-width: 800px; /* REDUCIDO de 850px */
     }
     
     .filters::before {
-        left: 25px; /* Ajustado */
+        left: 22px; /* REDUCIDO de 25px */
     }
     
     #search, #category {
-        height: 56px; /* Mantenido igual que desktop normal */
-        font-size: 17px;
-        min-width: 240px; /* Reducido de 260px */
-        padding: 16px 28px; /* Ajustado */
+        height: 54px; /* REDUCIDO ligeramente de 56px */
+        font-size: 16px;
+        min-width: 220px; /* REDUCIDO de 240px */
+        padding: 15px 24px; /* REDUCIDO de 16px 28px */
     }
     
     #search {
-        width: 300px; /* Reducido de 320px */
+        width: 280px; /* REDUCIDO de 300px */
     }
     
     #category {
-        width: 260px; /* Reducido de 280px */
-        padding-right: 48px;
+        width: 240px; /* REDUCIDO de 260px */
+        padding-right: 44px;
     }
     
     .category-filter-wrapper {
-        min-width: 260px;
+        min-width: 240px; /* REDUCIDO de 260px */
     }
     
     .category-filter-wrapper::after {
-        right: 22px;
-        font-size: 18px; /* Mantenido */
+        right: 20px; /* REDUCIDO de 22px */
+        font-size: 17px; /* REDUCIDO ligeramente */
     }
     
-    /* DESKTOP GRANDE: 3 COLUMNAS con imágenes más pequeñas */
+    /* DESKTOP GRANDE: Galería mantiene su margen */
     .gallery {
         grid-template-columns: repeat(3, 1fr);
-        gap: 25px; /* Reducido de 30px */
-        padding: 15px; /* Reducido de 20px */
+        gap: 25px; /* MANTENIDO */
+        padding: 15px; /* MANTENIDO */
     }
     
     .thumbnail {
-        height: 220px; /* REDUCIDO: de 280px a 220px */
-        border-radius: 12px; /* Mantenido */
+        height: 220px; /* MANTENIDO (tamaño reducido) */
+        border-radius: 12px;
     }
     
     .thumbnail img {
-        border-radius: 12px; /* Mantenido */
+        border-radius: 12px;
     }
 }
 
 /* ===== MEDIA QUERY: DESKTOP EXTRA GRANDE (1200px+) ===== */
 @media (min-width: 1200px) {
     h1 {
-        font-size: 3.2rem; /* Reducido de 3.5rem */
+        font-size: 2.8rem; /* REDUCIDO de 3.2rem */
     }
     
     .filters {
-        margin-bottom: 85px; /* Reducido de 100px */
-        max-width: 880px; /* Reducido de 950px */
+        margin-bottom: 45px; /* ¡¡REDUCIDO: de 85px a 45px!! */
+        max-width: 820px; /* REDUCIDO de 880px */
     }
     
     #search {
-        width: 320px; /* Reducido de 350px */
+        width: 300px; /* REDUCIDO de 320px */
     }
     
     #category {
-        width: 270px; /* Reducido de 300px */
+        width: 250px; /* REDUCIDO de 270px */
     }
     
     .category-filter-wrapper {
-        min-width: 270px;
+        min-width: 250px; /* REDUCIDO de 270px */
     }
     
-    /* DESKTOP EXTRA GRANDE: 3 COLUMNAS con imágenes más pequeñas */
+    /* DESKTOP EXTRA GRANDE: Galería mantiene su margen */
     .gallery {
         grid-template-columns: repeat(3, 1fr);
-        gap: 28px; /* Reducido de 35px */
+        gap: 28px; /* MANTENIDO */
     }
     
     .thumbnail {
-        height: 240px; /* REDUCIDO: de 300px a 240px */
+        height: 240px; /* MANTENIDO (tamaño reducido) */
     }
 }
 
 /* ===== MÓVILES MUY PEQUEÑOS (<400px) ===== */
 @media (max-width: 399px) {
     h1 {
-        font-size: 1.7rem;
-        margin: 15px 0 30px 0;
+        font-size: 1.6rem; /* REDUCIDO de 1.7rem */
+        margin: 12px 0 20px 0; /* REDUCIDO de 15px 0 30px 0 */
     }
     
     .filters {
-        margin-bottom: 25px; /* Reducido de 30px */
-        padding: 10px 8px; /* Ajustado */
+        margin-bottom: 10px; /* ¡¡REDUCIDO: de 25px a 10px!! */
+        padding: 10px 8px;
         gap: 6px;
     }
     
     #search, #category {
-        padding: 10px 12px; /* Ajustado */
-        font-size: 14px;
-        height: 44px; /* Reducido de 46px */
+        padding: 9px 10px; /* REDUCIDO de 10px 12px */
+        font-size: 13px; /* REDUCIDO de 14px */
+        height: 42px; /* REDUCIDO de 44px */
     }
     
     #search {
-        min-width: 120px; /* Ajustado */
+        min-width: 110px; /* REDUCIDO de 120px */
         max-width: 55%;
     }
     
     .category-filter-wrapper {
-        min-width: 110px;
+        min-width: 100px; /* REDUCIDO de 110px */
         max-width: 40%;
     }
     
     #category {
-        padding-right: 32px; /* Ajustado */
+        padding-right: 30px; /* REDUCIDO de 32px */
     }
     
     .category-filter-wrapper::after {
-        right: 10px; /* Ajustado */
-        font-size: 11px; /* Reducido de 12px */
+        right: 8px; /* REDUCIDO de 10px */
+        font-size: 10px; /* REDUCIDO de 11px */
     }
     
-    /* MÓVIL PEQUEÑO: 2 columnas con imágenes más pequeñas */
+    /* MÓVIL PEQUEÑO: Galería mantiene su margen */
     .gallery {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px; /* Reducido de 12px */
+        gap: 10px; /* MANTENIDO */
     }
     
     .thumbnail {
-        height: 140px; /* REDUCIDO: de 180px a 140px */
+        height: 140px; /* MANTENIDO (tamaño reducido) */
     }
 }
 
@@ -495,17 +495,17 @@ h1 {
 
 .close {
     position: fixed;
-    top: 20px; /* Reducido de 25px */
-    right: 30px; /* Ajustado */
+    top: 20px;
+    right: 30px;
     color: white;
-    font-size: 40px; /* Reducido de 45px */
+    font-size: 40px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 1001;
     background-color: rgba(0, 0, 0, 0.5);
-    width: 50px; /* Reducido de 55px */
-    height: 50px; /* Reducido de 55px */
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -520,32 +520,32 @@ h1 {
 
 /* ===== PAGINACIÓN ===== */
 .pagination {
-    margin-top: 30px; /* Reducido de 40px */
-    padding: 12px; /* Reducido de 15px */
+    margin-top: 30px;
+    padding: 12px;
     display: flex;
     justify-content: center;
-    gap: 12px; /* Reducido de 15px */
+    gap: 12px;
     flex-wrap: wrap;
 }
 
 .pagination button {
-    padding: 12px 24px; /* Reducido de 14px 28px */
-    font-size: 15px; /* Reducido de 16px */
+    padding: 12px 24px;
+    font-size: 15px;
     border: none;
-    border-radius: 8px; /* Reducido de 10px */
+    border-radius: 8px;
     background-color: rgba(0, 123, 255, 0.9);
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Times New Roman', Times, serif;
-    min-width: 120px; /* Reducido de 140px */
+    min-width: 120px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .pagination button:hover:not(:disabled) {
     background-color: #0056b3;
-    transform: translateY(-2px); /* Reducido de -3px */
+    transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
